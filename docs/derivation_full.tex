@@ -1,0 +1,196 @@
+\documentclass[11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\usepackage{xcolor}
+
+\newcommand{\ddr}[1]{\frac{d#1}{dr}}
+\newcommand{\ddy}[1]{\frac{d#1}{dy}}
+\newcommand{\nH}{\ensuremath{n_{\mathrm{H}}}}
+\newcommand{\hnui}{\ensuremath{\langle h\nu\rangle_i}}
+\newcommand{\transPhi}{\Psi}
+\newcommand{\ymin}{\ensuremath{y_{\mathrm{min}}}}
+
+\begin{document}
+
+\title{A derivation of the equations for a dusty HII region with self-gravity}
+\author{Jarle Brinchmann}
+\maketitle
+
+\section{Introduction}
+\label{sec:introduction}
+
+This document fills in the details of the derivation of the differential equations governing the evolution of a dusty HII region with self-gravity, slightly extending the work of Draine (2011).
+
+\section{Physical equations}
+\label{sec:physical-equations}
+
+There are four physical equations of interest: the hydrostatic equilibrium, the Poisson equation, the flow of ionising radiation, and the dust absorption equation. We will do these one-by-one, but to start with it is useful to write them all down:
+\begin{align}
+  \label{eq:1}
+  \ddr{P} & =-\rho\ddr{\Phi}+\frac{\nH \sigma_d L_i}{4\pi c r^2} \left[\beta e^{-\tau} + \phi(r)\right]+ \alpha_B \nH^2 \frac{\hnui}{c}\\ \label{eq:2}
+\ddr{\Phi} & = \frac{G M(<r)}{r^2} \\  
+  \ddr{\phi} & = -\frac{\alpha_B \nH^2 4\pi r^2}{Q_0} - \nH\sigma_d\phi \\
+  \ddr{\tau} & = \nH \sigma_d\\
+\end{align}
+
+We have here already assumed spherical symmetry. We next assume that $P=2\nH kT$ and that the gas is isothermal. These are not unreasonable assumptions --- throughout the problem is that we are assuming homogeneity which is unlikely to be fully satisfied and given the strong dependence of recombination on density this is iffy. The other assumption that we are making is that the gas is hydrogen throughout (that was already implict in the equations above) which is also not correct, at least a correction for helium should be included. This would increase the number of particles of course so would alter the pressure, while ignoring helium in the recombinations might be a better approximation. Anyway, here we continue with the simpler assumption of pure helium, in which case a fully ionised gas has $P=2\nH kT$, thus under these assumptions equation~\eqref{eq:1}  becomes
+\begin{equation}
+  \label{eq:3}
+  2kT\ddr{n} = -m_P n \ddr{\Phi}+\frac{n}{r^2} \frac{\sigma_d L_i}{8\pi c kT} g(\tau,\phi) + n^2\frac{\alpha_B \hnui}{2ckT}\frac{1}{c},
+\end{equation}
+where I have set $n\equiv\nH$ for simplicity of notation and $g(\tau, \phi)=\beta e^{-\tau(r)}+\phi(r)$.
+
+\section{Transformed equations}
+\label{sec:transf-equat}
+
+Following Draine (2011) we can now introduce unitless variables through
+\begin{equation}
+  \label{eq:4}
+  u = \frac{n_0}{n}
+\end{equation}
+and
+\begin{equation}
+  \label{eq:5}
+  r = \lambda_0 y,
+\end{equation}
+where the characteristic density $n_0$ and length-scale $\lambda_0$ are given by
+\begin{align}
+  \label{eq:6}
+  n_0 & = \frac{4\pi\alpha_B}{Q_0} \left(\frac{2 c kT}{\alpha_B \hnui}\right)^3\\
+  \label{eq:6b}
+  \lambda_0 & = \frac{Q_0}{4\pi \alpha_B}\left(\frac{\alpha_B\hnui}{2ckT}\right)^2,
+\end{align}
+and where the expression inside of the parenthesis for $n_0$ times the dust absorption cross-section $\sigma_d$ defines the parameter $\gamma$
+\begin{align}
+  \label{eq:7}
+  \gamma & = \left(\frac{2 c kT}{\alpha_B \hnui}\right)\sigma_d.
+\end{align}
+The other model parameter, $\beta=L_n/L_i$, is the ratio of the flux above the ionising threshold for hydrogen to that below.
+
+With these definitions we can start transforming the equations. It is useful to do this piece by piece, so let us start with the left hand side of equation~\eqref{eq:3} after dividing through by $2kT$ on both sides of the equation
+\begin{align}
+  \label{eq:8}
+  \ddr{n} & = \frac{d(n_0/0)}{d(\lambda_0 y)} \\
+          & = -\frac{n_0}{u^2} \frac{1}{\lambda_0} \ddy{u}.
+\end{align}
+where we assumed isothermality when we took $n_0$ out of the derivative.
+
+The gravity term is straightforward
+\begin{align}
+  \label{eq:Phi_eq}
+  -\frac{m_P}{2kT} n \ddr{\Phi} & = -\frac{m_P}{2kT}\frac{1}{u}{\color{red} \frac{n_0}{\lambda_0}} \ddy{\Phi},
+\end{align}
+and the ionisation part is also fairly easy if we first calculate $n/r^2$
+\begin{equation}
+  \label{eq:11}
+  \frac{n}{r^2} = \frac{n_0}{\lambda_0}\frac{1}{\lambda_0} \frac{1}{uy^2}.
+\end{equation}
+which then allows us to write
+\begin{align}
+  \label{eq:10}
+  \frac{n}{r^2} \frac{\sigma_d L_i}{8\pi ck T} g(\tau, \phi) & = \frac{n_0}{\lambda_0} \frac{\sigma_d L_i}{4\pi c}\frac{1}{2kT} g(\tau, \phi)\frac{1}{uy^2} \\
+                                                              \mbox{use that } L_0=\hnui Q_0 &  \\
+  \label{eq:11}
+  & =  \frac{n_0}{\lambda_0} \frac{\sigma_d Q_0 \hnui }{4\pi c}\frac{1}{2kT} g(\tau, \phi)\frac{1}{uy^2}.
+\end{align}
+introducing the expression for $1/\lambda_0$ from equation~\eqref{eq:6b} into equation~\eqref{eq:11} we get
+\begin{align}
+  \label{eq:12}
+  \frac{n}{r^2} \frac{\sigma_d L_i}{8\pi ck T} g(\tau, \phi) & = \frac{n_0}{\lambda_0}
+                                                               \underbrace{\sigma_d \frac{2ckT}{\alpha_B \hnui}}_{\gamma} g(\tau,\phi)\frac{1}{uy^2} \\
+  & = {\color{red} \frac{n_0}{\lambda_0}} \gamma \frac{g(\tau,\phi)}{uy^2}
+\end{align}
+
+And finally the recombination part becomes
+\begin{align}
+  \label{eq:13}
+  n^2 \frac{\alpha_B\hnui}{2c kT}\frac{1}{c} & = n^2 \frac{\sigma_d}{\gamma} \\
+                                             & = n_0^2 \frac{1}{u^2}\frac{\sigma_d}{\gamma} \\
+  & = \frac{1}{u^2}{\color{red} \frac{n_0}{\lambda_0}}
+\end{align}
+
+Throughout I have highlighted the combination $n_0/\lambda_0$ because this cancels with the left hand side (see equation~\eqref{eq:8}). Thus we can put this together and get
+\begin{equation}
+  \label{eq:14}
+  -\frac{1}{u^2} \ddy{u} = -\frac{m_P}{2kT}\ddy{\Phi} + \gamma g(\tau,\phi)\frac{1}{uy^2} + \frac{1}{u^2},
+\end{equation}
+which we now can multiply through by $u^2$ to get
+\begin{equation}
+  \label{eq:u_eq}
+  \ddy{u} = \frac{m_P}{2kT} u^2 \ddy{\Phi} - \gamma\frac{u}{y^2}g(\tau,\phi) - 1.
+\end{equation}
+
+The equations for $\phi$ and $\tau$ are easier to transform and give the same result as in Draine 2011:
+\begin{align}
+  \label{eq:phi_eq}
+  \ddy{\phi} & = -\left(\frac{y}{u}\right)^2-\gamma \frac{\phi}{u}\\
+  \label{eq:tau_eq}
+  \ddy{\tau} & = \frac{\gamma}{u}.
+\end{align}
+
+What about $\Phi$? This clearly is not as conveniently independent of $T$ as the other terms are, so let us look at the Poisson equation:
+\begin{align}
+  \label{eq:15}
+  \ddr{\Phi} & = \frac{1}{\lambda_0} \ddy{\Phi}\\
+  \label{eq:16}
+  \frac{GM(r)}{r^2} & = \frac{G}{\lambda_0^2} \frac{M(y)}{y^2},
+\end{align}
+where $M(y)$ is given by
+\begin{align}
+  \label{eq:16}
+  M(r) & = 4\pi \int_0^r x^2 \rho(x)dr \\
+  M(y) & = 4\pi \int_0^y \lambda_0^2 x^2 m_p n(x) d\lambda_0 x \\
+       & = 4\pi \lambda_0^2 m_p n_0 \int_0^y \frac{x^2}{u(x)} dx.
+\end{align}
+
+To make some progress here we can look at equation~\eqref{eq:Phi_eq} and recognise that under the assumption of isothermality we can define $\transPhi = m_p\Phi/2 kT$ to reduce that term to $u^2d\transPhi/dy$ and the Poisson equation then becomes
+\begin{equation}
+  \label{eq:9}
+  \frac{d\transPhi}{dy} = \frac{G m_p}{\lambda_0}\frac{1}{2kT/3} \frac{4\pi}{3} \lambda_0^3 n_0 m_p R(y),
+\end{equation}
+where
+\begin{equation}
+  \label{eq:17}
+  R(y) = \frac{1}{y^2}\int_0^y \frac{x^2}{u(x)},
+\end{equation}
+and we can recognise the thermal energy ($E_{\mathrm{th}} = 2kT/3$). We also see that $4\pi \lambda_0^3 n_0 m_p/3$ is a characteristic mass of the system which we can write as $M_0$. Combining this with the $G/\lambda_0$ allows us to define a gravitational binding energy $E_g = GM_0m_p/\lambda_0$ which allows us to reduce the equation to 
+\begin{equation}
+  \label{eq:transPhi_eq}
+  \ddy{\transPhi} = \frac{E_g}{E_{\mathrm{th}}} R(y).
+\end{equation}
+
+The ratio $E_g/E_{\mathrm{th}}$ is small, of the order of $10^{-3}$ for typical conditions, so should not be very relevant for us typically but as it is multiplied by $u^2$ back in the equation for $u(y)$ we see that for low density (large $u$), the term might become relevant. Thus it is worth trying to solve for this as well. To do that we need a different approach however as we have to calculate the $R(y)$ function at each step. This means solving a integro-differential equation and this is apparently best done in DifferentialEquations.jl using a delay differential equation solver.
+% see https://github.com/SciML/DifferentialEquations.jl/issues/383
+
+
+\subsection{Full equation set}
+\label{sec:full-equation-set}
+
+The full set of equations to solve then become (these have all been listed before but here joined for clarity):
+\begin{align}
+  \label{eq:21}
+  \ddy{u} & = u^2 \ddy{\transPhi} - \gamma\frac{u}{y^2}g(\tau,\phi) - 1 \\
+  \ddy{\phi} & = -\left(\frac{y}{u}\right)^2-\gamma \frac{\phi}{u}\\
+  \ddy{\tau} & = \frac{\gamma}{u} \\
+  \ddy{\transPhi} & = \frac{E_g}{E_{\mathrm{th}}} R(y)
+ \end{align}
+
+The initial conditions are $\phi(\ymin)=1$, $\tau(\ymin)=0$, $u(\ymin)=u_0$. For the gravity part it is trickier, but I will use the convenience of assuming that there is an inner gap so that the innermost point has a gravitational potential from just the central star(-cluster) which means that we can write:
+\begin{align}
+  \label{eq:22}
+  \Phi(\ymin) & = -\frac{GM_\star}{\ymin} \\
+  \transPhi(\ymin) & = -\frac{GM_\star m_P}{2 kT \ymin}. \\
+\end{align}
+Putting in the constants this allows us to write the initial condition on $\transPhi$ as
+\begin{equation}
+  \label{eq:24}
+  \transPhi(\ymin) \approx 3.25461\times 10^{-3}\; T_4^{1.83}\; Q_{0,49}^{-1}\; \left(\frac{18\mathrm{eV}}{\hnui}\right)^2 \left(\frac{M_\star}{M_\odot}\right) \frac{1}{\ymin}
+\end{equation}
+
+
+
+
+
+\end{document}
