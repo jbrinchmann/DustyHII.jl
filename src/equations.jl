@@ -150,3 +150,17 @@ function physical_to_model(;Teff=45000u"K", Tgas=1e4u"K", ninner=1e3u"1/cm^3",
             Tgas=Tgas, ninner=ninner, σ=σ)
 
 end
+
+
+"""
+    model_to_physical(m)
+
+Takes a model which has been calculated in unitless form and converts quantities
+to physical units
+
+NOT YET FUNCTIONAL
+"""
+function model_to_physical(m, T, Q0, hnui, σ)
+    return Draine2011Physical(m, T, Q0, hnui, σ)
+
+end
