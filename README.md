@@ -19,7 +19,7 @@ variables:
 
 - y is a dimensionless radius
 - u(y) is a dimensionless inverse density
-- &phi(y); is a dimensionless variable tracing the ionizing photons as a
+- ϕ(y) is a dimensionless variable tracing the ionizing photons as a
   function of radius.
 
 
