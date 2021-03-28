@@ -2,8 +2,10 @@
 
 This package implements the dusty HII models with radiation pressure
 presented in
-[Draine (2011)](https://ui.adsabs.harvard.edu/abs/2011ApJ...732..100D/abstract).
+[Draine (2011, D11 hereafter)](https://ui.adsabs.harvard.edu/abs/2011ApJ...732..100D/abstract).
 However I have extended this to also include self-gravity.
+
+*NOTE*: This is currently under development. It works but is not fully tested.
 
 # Basic usage
 
@@ -12,17 +14,19 @@ parameter which is a `Drain2011Parameters` type, and the model results
 are encapsulated in the  `Draine2011` type. 
 
 
+The model is specified in a dimensionless form in terms of three
+variables:
+
+- y is a dimensionless radius
+- u(y) is a dimensionless inverse density
+- &phi(y); is a dimensionless variable tracing the ionizing photons as a
+  function of radius.
+
 
 # Governing equations
 
-These are defined through a set of differential equations covering the physics of the system. I want to extend these with the Poisson equation and including self-gravity, but this notebook is for the vanilla Drain (2011) model.
-
-In this model the defining equations are as follows:
-
-$$
-2k_BT \frac{dn_H}{dr} = n_H\sigma_d \frac{L_n e^{-\tau} + L_i\phi}{4\pi r^2 c} + \alpha_B n_H^2 \frac{\langle h\nu\rangle_i}{c}, $$
-
-$$\frac{d\phi}{dr} = -\frac{\alpha_B n_H^2 4 \pi r^2}{Q_0} - n_H \sigma_d \phi,$$
-and
-$$ \frac{d\tau}{dr} = n_H \sigma_d.$$
+These are defined through a set of differential equations covering the
+physics of the system. The derivation of these equations is given
+briefly in D11. A more extended version and the expansion to
+self-gravity can be found in the `docs` folder.
 
