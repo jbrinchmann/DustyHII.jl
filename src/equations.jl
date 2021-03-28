@@ -5,6 +5,12 @@ using Dierckx
 # The file containing the various differential equation systems to solve.
 #
 
+
+
+#--------------------------
+# Definition of equations
+#--------------------------
+
 "The differential equation system derived by Draine 2011"
 function d2011system!(dv, v, p, y)
     u, ϕ, τ = v
