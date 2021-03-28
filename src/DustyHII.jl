@@ -48,6 +48,16 @@ ymax::Real
 end
 
 
+"""
+Draine2011Physical(model, T, Q0, hnui, σ)
+
+A type containing the necessary information to give a physical realisation
+of a model. It encapsulates the abstract unitless model solution as well
+as the physical characteristics needed to create a model.
+
+TODO: Support self-gravity
+
+"""
 mutable struct Draine2011Physical <: AbstractPhysicalModel
 model::Draine2011
 T
