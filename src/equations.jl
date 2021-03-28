@@ -156,7 +156,7 @@ end
     model_to_physical(m)
 
 Takes a model which has been calculated in unitless form and converts quantities
-to physical units
+to physical units.
 
 NOT YET FUNCTIONAL
 """
