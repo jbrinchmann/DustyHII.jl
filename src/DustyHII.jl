@@ -56,7 +56,7 @@ of a model. It encapsulates the abstract unitless model solution as well
 as the physical characteristics needed to create a model.
 
 TODO: Support self-gravity
-
+TODO (maybe): allow for type-checking for the extra parameters. 
 """
 mutable struct Draine2011Physical <: AbstractPhysicalModel
 model::Draine2011
@@ -69,6 +69,8 @@ end
 
 
 # I would like a pretty printing method as well.
+#
+# This is far from being ready, it is here mostly as a placeholder. 
 function Base.show(io::IO, m::Draine2011)
     println(io, "Dusty HII region model")
     ymin=m.ymin ; ymax=m.ymax
